@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://perp.com/docs/market-maker-api
+summary: >-
+  perp.com V1 runs a testnet alongside live. Test vs live is selected purely by
+  the API-key prefix; there are no published magic test order values. As of the
+  probe date the API host (api.perp.com) does not yet resolve publicly, so the
+  Market Maker API is documented but not yet reachable.
+environments:
+  - name: testnet
+    api_key_prefix: perp_test_
+  - name: live
+    api_key_prefix: perp_live_
+    key_format: 'perp_live_<48 hex>'
+key_secret:
+  format: 32 random bytes (64 hex chars)
+  note: API secret is never retransmitted after creation.
+notes: >-
+  No hosted test cards / fixtures / test clocks are documented (this is an
+  on-chain derivatives venue, not a card acquirer). The Dead-Man Switch
+  (CONFIGURE_DEAD_MAN_SWITCH) can be exercised in testnet to validate
+  auto-cancel-on-disconnect behavior before going live.

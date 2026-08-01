@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://perp.com/docs/market-maker-api
+scope: per API key
+overage:
+  http_status: 429
+  error_code: MM_4001_RATE_LIMIT
+  note: Overages return 429 with retry guidance.
+limits:
+  - operation_class: CREATE_BULK
+    sustained_per_second: 100
+    burst: 200
+  - operation_class: CANCEL
+    sustained_per_second: 500
+    burst: 1000
+  - operation_class: CANCEL_ALL
+    sustained_per_second: 10
+    burst: 20
+  - operation_class: READ
+    sustained_per_second: 1000
+    burst: 2000
+limit_count: 4

@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://perp.com/docs/market-maker-api
+api: perp.com V1 Market Maker API
+authentication:
+  style: HMAC-SHA256 signed requests (API key + secret)
+  headers: [X-API-Key, X-Timestamp, X-Signature]
+  clock_skew: '+/- 5 seconds (NTP-synced)'
+  ref: authentication/perp-authentication.yml
+idempotency:
+  supported: true
+  mechanism: >-
+    All writes require a root `id` (request ID) and are fully idempotent.
+    Responses are cached for 24 hours; a duplicate request ID returns
+    MM_1007_DUPLICATE_REQUEST.
+  request_id_field: id
+  retention: 24h
+  per_order_key: clientOrderId
+  anti_replay:
+    field: nonce
+    scope: wallet
+    error: MM_2013_NONCE_REUSED
+  ref: errors/perp-error-codes.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  rest_prefix: /api/v1/
+  example: https://api.perp.com/api/v1/mm/*
+transport:
+  rest: https://api.perp.com/api/v1/mm/*
+  websocket_private: wss://api.perp.com/ws/private
+  websocket_market: wss://api.perp.com/ws/market
+  note: WebSocket is the primary trading transport; REST is secondary for reads.
+rate_limit_signaling:
+  http_status: 429
+  error_code: MM_4001_RATE_LIMIT
+  ref: rate-limits/perp-rate-limits.yml
+error_envelope:
+  format: provider error codes MM_<class><n>_<NAME>
+  ref: errors/perp-error-codes.yml
+safety:
+  dead_man_switch:
+    command: CONFIGURE_DEAD_MAN_SWITCH
+    param: timeoutMs (0 disables)
+    behavior: Gateway auto-cancels all orders on connection loss; heartbeat via PING (~1000ms).
+  trading_mode:
+    command: SET_TRADING_MODE
+    error: MM_3001_TRADING_MODE_RESTRICTED

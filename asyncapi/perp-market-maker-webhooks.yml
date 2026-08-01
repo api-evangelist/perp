@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: https://perp.com/docs/market-maker-api
+spec_type: Webhooks
+transport: websocket
+summary: >-
+  The perp.com V1 Market Maker API exposes a real-time event surface over
+  WebSocket rather than HTTP webhooks. There are two endpoints: a private,
+  authenticated user stream and a public market-data stream. No published
+  AsyncAPI document exists yet; this is a faithful catalog of the documented
+  channels.
+endpoints:
+  - name: private
+    url: wss://api.perp.com/ws/private
+    auth: AUTHENTICATE command (X-API-Key / X-Timestamp / X-Signature)
+    channels:
+      - user.orders
+      - user.positions
+      - user.balance
+      - user.fills
+      - user.margin
+      - user.risk
+      - user.liquidations
+  - name: market
+    url: wss://api.perp.com/ws/market
+    auth: none (public)
+    channels:
+      - name: book
+        subscribe: SUBSCRIBE_BOOK
+        messages: [BOOK_SNAPSHOT, BOOK_DELTA]
+      - name: trades
+      - name: mark_price
+safety:
+  dead_man_switch: >-
+    Gateway auto-cancels all orders on connection loss; heartbeat via PING
+    (~1000ms), timeout configured via CONFIGURE_DEAD_MAN_SWITCH.

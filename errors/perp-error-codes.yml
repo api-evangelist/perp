@@ -1,0 +1,62 @@
+generated: '2026-07-20'
+method: searched
+source: https://perp.com/docs/market-maker-api
+format: provider-error-registry
+envelope:
+  note: >-
+    Errors are returned with a provider error code of the form MM_<class><n>_<NAME>.
+    Rate-limit overages surface as HTTP 429 carrying MM_4001_RATE_LIMIT.
+  classes:
+    '1xxx': authentication / signing
+    '2xxx': order validation / trading
+    '3xxx': trading-mode / state
+    '4xxx': rate limiting
+errors:
+  - code: MM_1001_INVALID_API_KEY
+    meaning: API key not found
+    area: authentication
+  - code: MM_1002_KEY_REVOKED
+    meaning: Key revoked
+    area: authentication
+  - code: MM_1005_INVALID_SIGNATURE
+    meaning: HMAC mismatch
+    area: authentication
+  - code: MM_1006_SIGNATURE_EXPIRED
+    meaning: Timestamp outside +/-5s drift
+    area: authentication
+  - code: MM_1007_DUPLICATE_REQUEST
+    meaning: Request ID already processed (idempotency replay)
+    area: idempotency
+  - code: MM_1008_NOT_AUTHENTICATED
+    meaning: Command sent before successful auth
+    area: authentication
+  - code: MM_2002_INSUFFICIENT_MARGIN
+    meaning: Not enough margin for the order
+    area: trading
+  - code: MM_2003_INVALID_PRICE
+    meaning: Price off tick or out of range
+    area: trading
+  - code: MM_2004_INVALID_SIZE
+    meaning: Size below min or above max
+    area: trading
+  - code: MM_2008_POST_ONLY_REJECTED
+    meaning: Post-only order would have crossed
+    area: trading
+  - code: MM_2009_REDUCE_ONLY_REJECTED
+    meaning: Reduce-only order would increase position
+    area: trading
+  - code: MM_2010_INVALID_ORDER_SIGNATURE
+    meaning: Bad EIP-712 order signature
+    area: trading
+  - code: MM_2011_WALLET_MISMATCH
+    meaning: Signer not authorized for key
+    area: trading
+  - code: MM_2013_NONCE_REUSED
+    meaning: Order nonce already used (anti-replay)
+    area: trading
+  - code: MM_3001_TRADING_MODE_RESTRICTED
+    meaning: Command forbidden in the current trading mode
+    area: state
+  - code: MM_4001_RATE_LIMIT
+    meaning: Rate limit exceeded (HTTP 429)
+    area: rate-limiting

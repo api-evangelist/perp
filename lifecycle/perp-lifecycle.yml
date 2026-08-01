@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://perp.com/docs/market-maker-api
+versioning:
+  scheme: uri-path
+  current: v1
+  rest_prefix: /api/v1/
+  docs: https://perp.com/docs/market-maker-api
+maturity:
+  perp_com_v1: >-
+    Documented; api.perp.com does not yet resolve publicly (V1 testnet). Both
+    testnet (perp_test_) and live (perp_live_) credential prefixes are documented.
+status_page: null
+sla: null
+deprecation:
+  policy_url: null
+  notes:
+    - >-
+      The Curie (v2) GraphQL subgraph baseURL
+      (api.thegraph.com/subgraphs/name/perpetual-protocol/perpetual-v2-optimism)
+      now 301-redirects to error.thegraph.com/apierror.json: The Graph hosted
+      service has been sunset. The Curie subgraph must be consumed via The
+      Graph's decentralized network / Subgraph Studio or Satsuma going forward.
+    - >-
+      The @perp/sdk-curie SDK and Curie (v2) contracts are legacy relative to the
+      perp.com V1 prediction-market platform the team has pivoted to.
+deprecated_endpoints:
+  - endpoint: https://api.thegraph.com/subgraphs/name/perpetual-protocol/perpetual-v2-optimism
+    reason: The Graph hosted service sunset (301 to error.thegraph.com)

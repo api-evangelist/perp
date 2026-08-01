@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: searched
+source: https://perp.com/docs/market-maker-api
+docs: https://perp.com/docs/market-maker-api
+summary:
+  types: [apiKey, hmac]
+  api_key_in: [header]
+  oauth2_flows: []
+  note: >-
+    The perp.com V1 Market Maker API uses HMAC-SHA256 request signing with an
+    API key + secret pair. There is no OAuth surface. The public Curie (v2)
+    GraphQL subgraph on The Graph requires no authentication. Order placement
+    additionally requires an on-chain EIP-712 wallet signature over the order
+    payload.
+schemes:
+  - name: hmac-api-key
+    type: apiKey
+    scheme: hmac-sha256
+    in: header
+    credentials:
+      api_key:
+        header: X-API-Key
+        format: 'perp_live_<48 hex> (live) or perp_test_<...> (testnet)'
+      api_secret:
+        format: 32 random bytes (64 hex chars)
+        note: never retransmitted after creation
+      timestamp:
+        header: X-Timestamp
+        format: Unix time in milliseconds
+        drift_tolerance: '+/- 5 seconds; clock must be NTP-synced'
+      signature:
+        header: X-Signature
+        format: HMAC-SHA256 over the request pre-image (hex)
+    websocket:
+      note: >-
+        WebSocket connections authenticate with an AUTHENTICATE command carrying
+        the same X-API-Key / X-Timestamp / X-Signature fields.
+    errors:
+      - MM_1001_INVALID_API_KEY
+      - MM_1002_KEY_REVOKED
+      - MM_1005_INVALID_SIGNATURE
+      - MM_1006_SIGNATURE_EXPIRED
+      - MM_1008_NOT_AUTHENTICATED
+    sources: [docs/market-maker-api]
+  - name: eip712-order-signature
+    type: mutualTLS
+    scheme: eip712-wallet-signature
+    note: >-
+      Individual orders carry an EIP-712 signature produced by the trader's
+      wallet; the signer must be authorized for the API key. Bad or mismatched
+      signatures return MM_2010_INVALID_ORDER_SIGNATURE / MM_2011_WALLET_MISMATCH.
+    sources: [docs/market-maker-api]
+  - name: curie-subgraph-public
+    type: apiKey
+    scheme: none
+    note: >-
+      The Curie (v2) GraphQL subgraph is public and unauthenticated on The Graph
+      hosted service (now sunset; see lifecycle).
+    sources: [apis.yml]

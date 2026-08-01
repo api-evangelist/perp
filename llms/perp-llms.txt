@@ -1,0 +1,28 @@
+# Perp (Perpetual Protocol)
+
+> Perp is a decentralized derivatives protocol backed by Multicoin Capital. Its Curie (v2) generation runs on-chain perpetual futures on Optimism, exposed through a public GraphQL subgraph, an official TypeScript SDK, and on-chain smart-contract packages. The team is building perp.com, a leveraged on-chain prediction-market platform (up to 5x leverage on elections, macro, sports, and cultural outcomes) currently in V1 testnet; a public REST/market-maker API is documented as forthcoming.
+
+## APIs
+
+- [Perpetual Protocol Curie v2 Subgraph (GraphQL)](https://thegraph.com/hosted-service/subgraph/perpetual-protocol/perpetual-v2-optimism): Public GraphQL subgraph indexing positions, markets, trades, liquidations, and funding on Optimism. HTTP endpoint: https://api.thegraph.com/subgraphs/name/perpetual-protocol/perpetual-v2-optimism
+
+## SDKs & Packages
+
+- [@perp/sdk-curie](https://www.npmjs.com/package/@perp/sdk-curie): Official JavaScript/TypeScript SDK for Curie v2 (`yarn add @perp/sdk-curie`)
+- [@perp/curie-deployments](https://www.npmjs.com/package/@perp/curie-deployments): Contract ABIs and deployed addresses
+- [@perp/curie-contract](https://www.npmjs.com/package/@perp/curie-contract): Curie v2 core smart contracts
+- [@perp/perp-oracle-contract](https://www.npmjs.com/package/@perp/perp-oracle-contract): Oracle contracts
+- [@perp/common](https://www.npmjs.com/package/@perp/common): Backend common library
+
+## Docs
+
+- [Developer Docs](https://perp.com/docs): Architecture, trading, order types, oracle, ADL, and market-maker API
+- [Market Maker API](https://perp.com/docs/market-maker-api): Market-maker API reference (perp.com V1)
+- [GitHub Organization](https://github.com/perpetual-protocol): Contracts, SDK, subgraph, tooling
+- [SDK Source](https://github.com/perpetual-protocol/sdk-curie): TypeScript SDK repository
+- [Subgraph Source](https://github.com/perpetual-protocol/perp-curie-subgraph): GraphQL subgraph repository
+
+## Community
+
+- [X / Twitter](https://x.com/perpdotcom)
+- [Discord](https://discord.gg/perpdotcom)

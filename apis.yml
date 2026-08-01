@@ -1,9 +1,34 @@
 aid: perp
 name: Perp
-description: 'Perp is a company surfaced as a portfolio company of multicoin-capital and added to the
-  API Evangelist network as a stub for enrichment. Sector: crypto-web3. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Perp (Perpetual Protocol) is a decentralized derivatives protocol backed by
+  Multicoin Capital. Its Curie (v2) generation ran on-chain perpetual futures on
+  Optimism via audited smart contracts, a public GraphQL subgraph on The Graph,
+  and an official TypeScript SDK (@perp/sdk-curie). The team has since pivoted to
+  perp.com, a leveraged on-chain prediction-market platform ("perpetual futures
+  for your predictions") offering up to 5x leverage on elections, macro, sports,
+  and cultural outcomes with orderbook-driven, no-expiry positions and funding-rate
+  rebalancing. The perp.com V1 Market Maker API is now documented in detail (a
+  signed WebSocket + REST interface with HMAC-SHA256 auth, bulk order commands, a
+  dead-man switch, private/public WebSocket streams, per-key rate limits, and a
+  full MM_* error registry) though the api.perp.com host is not yet publicly
+  reachable (V1 testnet). The other concrete developer surface is the Curie (v2)
+  GraphQL subgraph, the TypeScript SDK, and the on-chain contract packages
+  published to npm under the @perp scope.
 url: https://raw.githubusercontent.com/api-evangelist/perp/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://user-images.githubusercontent.com/5022617/167766554-055c9785-00ec-4a5a-86ac-a4b3e1a42e76.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,11 +37,62 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Crypto Web3
-apis: []
+- DeFi
+- Derivatives
+- Perpetual Futures
+- Prediction Markets
+- Optimism
+- GraphQL
+- Blockchain
+- SDK
+apis:
+- name: Perpetual Protocol Curie v2 Subgraph
+  description: >-
+    Public GraphQL subgraph indexing the Perpetual Protocol Curie (v2) perpetual
+    futures protocol on Optimism (positions, markets, trades, liquidations,
+    funding). Served via The Graph hosted service and Satsuma.
+  humanURL: https://thegraph.com/hosted-service/subgraph/perpetual-protocol/perpetual-v2-optimism
+  baseURL: https://api.thegraph.com/subgraphs/name/perpetual-protocol/perpetual-v2-optimism
+  tags:
+  - GraphQL
+  - Subgraph
+  - Optimism
+  - DeFi
+  properties:
+  - type: GraphQL
+    url: https://api.thegraph.com/subgraphs/name/perpetual-protocol/perpetual-v2-optimism
+  - type: SourceCode
+    url: https://github.com/perpetual-protocol/perp-curie-subgraph
+- name: Perp V1 Market Maker API
+  description: >-
+    Signed, high-performance interface for connecting trading bots to the perp.com
+    V1 matching engine: a private WebSocket trading channel, a public WebSocket
+    market-data channel, and a secondary REST read API under /api/v1/mm. Auth is
+    HMAC-SHA256 (API key + secret). Documented; host api.perp.com not yet publicly
+    reachable (V1 testnet).
+  humanURL: https://perp.com/docs/market-maker-api
+  baseURL: https://api.perp.com/api/v1/mm
+  x-status: documented-testnet
+  tags:
+  - REST
+  - WebSocket
+  - Trading
+  - Derivatives
+  properties:
+  - type: APIReference
+    url: https://perp.com/docs/market-maker-api
+  - type: Authentication
+    url: authentication/perp-authentication.yml
+  - type: Webhooks
+    url: asyncapi/perp-market-maker-webhooks.yml
+  - type: RateLimits
+    url: rate-limits/perp-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/perp-error-codes.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,4 +100,47 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://perp.fi
+  url: https://perp.com
+- type: DeveloperPortal
+  url: https://perp.com/docs
+- type: Documentation
+  url: https://perp.com/docs
+- type: APIReference
+  url: https://perp.com/docs/market-maker-api
+- type: GitHubOrganization
+  url: https://github.com/perpetual-protocol
+- type: Support
+  url: https://discord.gg/perpdotcom
+- type: X
+  url: https://x.com/perpdotcom
+- type: SourceCode
+  url: https://github.com/perpetual-protocol/sdk-curie
+- type: Packages
+  url: packages/perp-packages.yml
+- type: SDKs
+  url: packages/perp-packages.yml
+- type: DomainSecurity
+  url: security/perp-domain-security.yml
+- type: LLMsTxt
+  url: llms/perp-llms.txt
+- type: Authentication
+  url: authentication/perp-authentication.yml
+- type: Conventions
+  url: conventions/perp-conventions.yml
+- type: Idempotency
+  url: conventions/perp-conventions.yml
+- type: ErrorCatalog
+  url: errors/perp-error-codes.yml
+- type: RateLimits
+  url: rate-limits/perp-rate-limits.yml
+- type: Webhooks
+  url: asyncapi/perp-market-maker-webhooks.yml
+- type: Sandbox
+  url: sandbox/perp-sandbox.yml
+- type: Lifecycle
+  url: lifecycle/perp-lifecycle.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v1

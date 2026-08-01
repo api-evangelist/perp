@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: live probes of /.well-known/* on Perp hosts
+hosts:
+- host: https://perp.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://perp.fi
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://api.perp.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 0
+  - path: /.well-known/openid-configuration
+    status: 0
+  - path: /.well-known/oauth-authorization-server
+    status: 0
+  - path: /.well-known/api-catalog
+    status: 0
+  note: api.perp.com does not resolve publicly yet (documented V1 host, not deployed)
+notes: >-
+  No .well-known discovery documents or llms.txt are published on either host as of
+  the probe date. perp.fi (legacy) returns 404 at root; perp.com (current) is a
+  client-rendered SPA. The documented V1 API host api.perp.com does not yet resolve
+  (status 0). Absence recorded as valid data; no WellKnown/SecurityTxt pointer is
+  wired because nothing was found.

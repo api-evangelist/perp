@@ -1,0 +1,52 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.npmjs.com/org/perp
+packages:
+- language: javascript
+  registry: npm
+  name: "@perp/sdk-curie"
+  version: 1.22.0
+  description: JavaScript/TypeScript SDK for Perpetual Protocol Curie (v2). Beta.
+  url: https://www.npmjs.com/package/@perp/sdk-curie
+  repository: https://github.com/perpetual-protocol/sdk-curie
+  install: yarn add @perp/sdk-curie
+  official: true
+- language: javascript
+  registry: npm
+  name: "@perp/curie-deployments"
+  version: 2024.12.26-1735206870825
+  description: Perpetual Protocol Curie (v2) contract artifacts (ABIs) and deployed addresses.
+  url: https://www.npmjs.com/package/@perp/curie-deployments
+  repository: https://github.com/perpetual-protocol
+  install: yarn add @perp/curie-deployments
+  official: true
+- language: solidity
+  registry: npm
+  name: "@perp/curie-contract"
+  version: 2.8.4
+  description: Perpetual Protocol Curie (v2) core smart contracts.
+  url: https://www.npmjs.com/package/@perp/curie-contract
+  repository: https://github.com/perpetual-protocol/perp-curie-contract
+  install: yarn add @perp/curie-contract
+  official: true
+- language: solidity
+  registry: npm
+  name: "@perp/perp-oracle-contract"
+  version: 0.6.8
+  description: Perpetual Protocol Curie (v2) oracle contracts.
+  url: https://www.npmjs.com/package/@perp/perp-oracle-contract
+  repository: https://github.com/perpetual-protocol/perp-oracle-contract
+  install: yarn add @perp/perp-oracle-contract
+  official: true
+- language: javascript
+  registry: npm
+  name: "@perp/common"
+  version: 0.1.14
+  description: Perpetual Protocol Curie (v2) backend common library.
+  url: https://www.npmjs.com/package/@perp/common
+  install: yarn add @perp/common
+  official: true
+notes: >-
+  @perp/sdk-curie is the primary official client SDK. The remaining packages are
+  contract artifacts, ABIs, deployed-address bundles, and a backend common library
+  used to integrate with the Curie (v2) perpetual futures protocol on Optimism.
