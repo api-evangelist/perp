@@ -99,6 +99,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: License
+  name: BSD-3-Clause
+  url: https://github.com/perpetual-protocol/perp-curie-subgraph/blob/develop/LICENSE
 - type: Website
   url: https://perp.com
 - type: DeveloperPortal
