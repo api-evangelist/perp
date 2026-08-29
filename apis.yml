@@ -16,6 +16,18 @@ description: >-
   GraphQL subgraph, the TypeScript SDK, and the on-chain contract packages
   published to npm under the @perp scope.
 url: https://raw.githubusercontent.com/api-evangelist/perp/refs/heads/main/apis.yml
+deliveryModel:
+  model: self-hosted
+  license: BSD-3-Clause
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -99,6 +111,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: IssueTracker
+  url: https://github.com/perpetual-protocol/perp-curie-subgraph/issues
 - type: License
   name: BSD-3-Clause
   url: https://github.com/perpetual-protocol/perp-curie-subgraph/blob/develop/LICENSE
