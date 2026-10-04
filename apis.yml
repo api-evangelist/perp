@@ -64,6 +64,8 @@ tags:
 - GraphQL
 - Blockchain
 - SDK
+- Web3
+- Cryptocurrency
 apis:
 - name: Perpetual Protocol Curie v2 Subgraph
   description: >-
