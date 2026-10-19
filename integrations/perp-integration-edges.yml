@@ -1,0 +1,85 @@
+edges:
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@perp/common
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@perp/common'
+      version: 0.1.14
+      released: '2026-04-01'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@perp/common
+      repo_leg: domain:perp.com
+      publisher_leg: email:perp.com
+      matched_by: domain
+    - name: '@perp/curie-contract'
+      version: 2.8.4
+      released: '2026-04-01'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@perp/curie-contract
+      repo_leg: domain:perp.com
+      publisher_leg: org:perp
+      matched_by: domain
+    - name: '@perp/curie-deployments'
+      version: 2024.12.26-1735206870825
+      released: '2026-04-01'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@perp/curie-deployments
+      repo_leg: domain:perp.com
+      publisher_leg: email:perp.com
+      matched_by: domain
+    - name: '@perp/perp-oracle-contract'
+      version: 0.6.8
+      released: '2026-04-01'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@perp/perp-oracle-contract
+      repo_leg: domain:perp.com
+      publisher_leg: org:perp
+      matched_by: domain
+    - name: '@perp/sdk-curie'
+      version: 1.22.0
+      released: '2026-04-01'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@perp/sdk-curie
+      repo_leg: github-org:perpetual-protocol
+      publisher_leg: org:perp
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
+generated: '2026-10-18'
+method: searched
+source:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
+checked:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
